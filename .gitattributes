@@ -1,0 +1,15 @@
+# Repo-level EOL normalization for this project
+* text=auto
+
+# Force LF in source files stored in the repo
+*.js text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+
+# Mark binaries
+*.png binary
+*.jpg binary
+*.gif binary
+*.zip binary

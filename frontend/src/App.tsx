@@ -6,7 +6,7 @@ function App() {
 
   const [messages,setMessages] = useState(["hi there", "hello"]);
   const wsRef = useRef();
-
+  const inputRef = useRef();
   useEffect(()=>{
     const ws = new WebSocket("http://localhost:8080");
 
@@ -25,7 +25,7 @@ function App() {
     return () =>{
       ws.close()
     }
-    
+
   },[])
 
   return (
@@ -36,10 +36,10 @@ function App() {
       </div>
 
       <div className='w-full bg-white flex'>
-        <input id='message' className='flex-1 p-4' type="text" />
+        <input ref={inputRef} id='message' className='flex-1 p-4' type="text" />
         
         <button onClick={()=>{
-          const message = document.getElementById("message")?.value;
+          const message = inputRef.current?.value;
           wsRef.current.send(JSON.stringify({
             type: "chat",
             payload:{
